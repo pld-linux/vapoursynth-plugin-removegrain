@@ -1,0 +1,41 @@
+From 1d1aa3047ec129f4152c3ae7933afe3921d67c34 Mon Sep 17 00:00:00 2001
+From: dmo <marillat@users.noreply.github.com>
+Date: Sun, 26 Sep 2021 22:34:27 +0200
+Subject: [PATCH] Add meson build
+
+---
+ meson.build | 25 +++++++++++++++++++++++++
+ 1 file changed, 25 insertions(+)
+ create mode 100644 meson.build
+
+diff --git a/meson.build b/meson.build
+new file mode 100644
+index 0000000..71b0655
+--- /dev/null
++++ b/meson.build
+@@ -0,0 +1,25 @@
++project('removegrain', 'c', 'cpp',
++  version : '1',
++  default_options : ['warning_level=3'])
++
++add_project_arguments('-ffast-math', language : 'c')
++
++sources = [
++     'src/clense.cpp',
++     'src/removegrainvs.cpp',
++     'src/repairvs.cpp',
++     'src/shared.cpp',
++     'src/shared.h',
++     'src/verticalcleaner.cpp'
++]
++
++vapoursynth_dep = dependency('vapoursynth', version: '>=55').partial_dependency(compile_args : true, includes : true)
++
++deps = [vapoursynth_dep]
++
++shared_module('removegrain', sources,
++  dependencies : deps,
++  install : true,
++  install_dir : join_paths(vapoursynth_dep.get_pkgconfig_variable('libdir'), 'vapoursynth'),
++  gnu_symbol_visibility : 'hidden'
++)
