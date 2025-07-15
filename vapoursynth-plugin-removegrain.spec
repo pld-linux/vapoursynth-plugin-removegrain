@@ -32,7 +32,7 @@ Vapoursynth.
 
 %prep
 %setup -q -n vs-removegrain-R%{version}
-%patch0 -p1
+%patch -P0 -p1
 
 %build
 %if %{with sse2}
