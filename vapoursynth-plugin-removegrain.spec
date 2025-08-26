@@ -19,6 +19,7 @@ URL:		https://github.com/vapoursynth/vs-removegrain
 BuildRequires:	libstdc++-devel
 BuildRequires:	meson
 BuildRequires:	ninja >= 1.5
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	vapoursynth-devel >= 55
 Requires:	vapoursynth >= 55
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
