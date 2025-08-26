@@ -21,6 +21,9 @@ BuildRequires:	meson
 BuildRequires:	ninja >= 1.5
 BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	vapoursynth-devel >= 55
+%if %{with sse2}
+Requires:	cpuinfo(sse2)
+%endif
 Requires:	vapoursynth >= 55
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
